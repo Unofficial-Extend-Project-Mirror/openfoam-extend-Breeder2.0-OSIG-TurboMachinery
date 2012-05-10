@@ -1,0 +1,24 @@
+This is the CGNSOO library. 
+It aims at providing an object-oriented interface to the CGNS Mid-level library
+suitable for integration with C++ development.
+
+The CGNS Mid-level library is a C library to read and write CFD related data in
+a CGNS file. A CGNS file is a binary archive with a hierarchical structure as 
+defined by normative documents which can be found at http://www.cgns.org.
+
+Since this structure and the MLL are still under development, the approach taken
+is to simply wrap the MLL with a set of simple classes. These classes generally
+don't store the actual CFD data; they only keep note of the handle (a path) into
+the CGNS database. Because of this design, some of CGNS's idiosyncracies are
+still apparent in CGNSOO. Errors are usually detected at the MLL level, but
+checked by CGNSOO which throws a corresponding exception. The basic idea behind
+this design was to minimize the amount of code to write and to keep it simple so
+it can easily be adapted to follow the MLL evolution. For a different design
+approach, see CGNS++ by Manuel Kessler at IAG in Stuttgart.
+
+Some caveat:
+The current version of CGNSOO was tested with MLL version 2.4.5
+Testing was limited to 32-bits linux systems
+Installation will likely require you to modify the Makefile
+Support of CGNS database in MODIFY mode was barely tested.
+

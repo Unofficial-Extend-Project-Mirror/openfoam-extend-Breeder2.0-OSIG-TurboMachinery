@@ -1,0 +1,6 @@
+cgnsToFoam.C
+CGNSBoundaryConditions.C
+ConnectivityMapper.C
+SolutionConverter.C
+CGNSQuantityConverter.C
+EXE = $(FOAM_SITE_APPBIN)/cgnsToFoam

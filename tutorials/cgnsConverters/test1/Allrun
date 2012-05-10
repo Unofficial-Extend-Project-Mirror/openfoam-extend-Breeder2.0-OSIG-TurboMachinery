@@ -1,0 +1,30 @@
+#!/bin/bash
+
+export LC_ALL=C
+
+# Execute test1 ------------------------------------------
+pushd ./case >/dev/null
+# convert the cgns file
+cgnsToFoam ../icem_mesh.cgns
+# adjust the boundary file
+# change the BC1_on_CURVES patch so it has a wall patch type
+perl -i -e '
+	$inWall=0;
+	while(<>) {
+	  if (/BC1_on_CURVES/ ) { $inWall=1; }
+	  if ( $inWall ) {
+	    Block: {
+	      if (/^\}/)            { $inWall=0;              last Block; }
+	      if (/\sphysicalType/) { s/patch/wallFunctions/; last Block; }
+	      if (/\stype/)         { s/patch/wall/;          last Block; }
+	    }
+	  }
+	  print;
+	}' constant/polyMesh/boundary
+# compute the flow
+echo "Running simpleFoam..."
+simpleFoam >& simpleFoam.log
+popd  >/dev/null
+
+# The end
+echo "Done."

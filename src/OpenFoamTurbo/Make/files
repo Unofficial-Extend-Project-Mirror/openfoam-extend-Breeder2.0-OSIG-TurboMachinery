@@ -1,0 +1,19 @@
+finiteVolume = ./finiteVolume
+
+fvPatchFields = $(finiteVolume)/fields/fvPatchFields
+derivedFvPatchFields = $(fvPatchFields)/derived
+
+$(derivedFvPatchFields)/profile1DfixedValue/profile1DfixedValueFvPatchFields.C
+$(derivedFvPatchFields)/profile1DfixedValue/profile1DRawData.C
+$(derivedFvPatchFields)/rotatingPressureDirectedInletVelocity/rotatingPressureDirectedInletVelocityFvPatchVectorField.C
+$(derivedFvPatchFields)/rotatingSplitVelocity/rotatingSplitVelocityFvPatchVectorField.C
+/*$(derivedFvPatchFields)/rotatingTotalTemperature/rotatingTotalTemperatureFvPatchScalarField.C*/
+
+cfdTools = $(finiteVolume)/cfdTools
+generalCfdTools = $(cfdTools)/general
+
+$(generalCfdTools)/SRFZones/SRFZone.C
+$(generalCfdTools)/SRFZones/SRFZones.C
+
+LIB = $(FOAM_SITE_LIBBIN)/libOpenFoamTurbo
+

@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      k;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 5;
+
+boundaryField
+{
+    rotorhub
+    {
+        type            compressible::kqRWallFunction;
+        value           uniform 5;
+    }
+    rotorshroud
+    {
+        type            compressible::kqRWallFunction;
+        value           uniform 5;
+    }
+    stator
+    {
+        type            compressible::kqRWallFunction;
+        value           uniform 5;
+    }
+    rotorStator1
+    {
+        type            zeroGradient;
+    }
+    rotorStator2
+    {
+        type            fixedValue;
+        value           uniform 5;
+    }
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 5;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    statorCyclic
+    {
+        type            cyclic;
+        value           uniform 5;
+    }
+    rotorCyclic
+    {
+        type            cyclic;
+        value           uniform 5;
+    }
+}
+
+
+// ************************************************************************* //

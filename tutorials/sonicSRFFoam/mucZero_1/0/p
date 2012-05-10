@@ -1,0 +1,91 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+    class           volScalarField;
+    object          p;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 95000.0;
+
+boundaryField
+{
+    rotorhub
+    {
+        type            zeroGradient;
+    }
+
+    rotorshroud
+    {
+        type            zeroGradient;
+    }
+
+    stator
+    {
+        type            zeroGradient;
+    }
+
+    rotorStator
+    {
+        type            cyclic;
+    }
+
+    rotorStator1
+    {
+        type            fixedValue;
+        value        uniform 85000.0;
+    }
+
+    rotorStator2
+    {
+        type            zeroGradient;
+    }
+
+    inlet
+    {
+        type            zeroGradient;
+//
+//            type            rotatingTotalPressure;
+//            U U;
+//            phi phi;
+//            rho none; // everytime none
+//            psi psi; // compressible psi; incompressible none
+//            p0              uniform 101325.0;
+//            gamma           1.4;
+//            omega           (0 0 950.0);
+    }
+
+    outlet
+    {
+        type            fixedValue;
+        value     uniform 85000.0;
+    }
+
+    rotorCyclic
+    {
+        type            cyclic;
+    }
+
+
+    statorCyclic
+    {
+        type            cyclic;
+    }
+
+}
+
+
+// ************************************************************************* //

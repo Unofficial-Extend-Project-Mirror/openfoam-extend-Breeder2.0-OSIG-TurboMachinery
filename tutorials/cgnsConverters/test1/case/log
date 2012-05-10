@@ -1,0 +1,206 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.5.x                                 |
+|   \\  /    A nd           | Web:      http://www.OpenFOAM.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Exec   : simpleFoam
+Date   : Nov 06 2008
+Time   : 13:50:45
+Host   : rdle02220mdw
+PID    : 11280
+Case   : /home/br8183/OpenFOAM/br8183-1.5.x/test_cases/cgnsConverters/test1/case
+nProcs : 1
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading field p
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Selecting incompressible transport model Newtonian
+Selecting RAS turbulence model kEpsilon
+kEpsilonCoeffs
+{
+    Cmu             0.09;
+    C1              1.44;
+    C2              1.92;
+    alphaEps        0.76923;
+}
+
+
+Starting time loop
+
+Time = 1
+
+DILUPBiCG:  Solving for Ux, Initial residual = 1, Final residual = 0.0033688742, No Iterations 1
+DILUPBiCG:  Solving for Uy, Initial residual = 1, Final residual = 0.003618859, No Iterations 1
+DILUPBiCG:  Solving for Uz, Initial residual = 1, Final residual = 0.0036640867, No Iterations 1
+DICPCG:  Solving for p, Initial residual = 1, Final residual = 0.0075444492, No Iterations 70
+time step continuity errors : sum local = 0.00023850649, global = -1.1779098e-06, cumulative = -1.1779098e-06
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.99719926, Final residual = 2.1702283e-06, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 1, Final residual = 8.9626969e-05, No Iterations 1
+ExecutionTime = 0.62 s  ClockTime = 1 s
+
+Time = 2
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.92910301, Final residual = 0.083113209, No Iterations 1
+DILUPBiCG:  Solving for Uy, Initial residual = 0.96230226, Final residual = 0.019111599, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.93483329, Final residual = 0.0079755491, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.9052259, Final residual = 0.0088790278, No Iterations 73
+time step continuity errors : sum local = 0.014061886, global = 0.0017163736, cumulative = 0.0017151957
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.99436663, Final residual = 2.4475541e-05, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.73030224, Final residual = 0.00046638246, No Iterations 1
+ExecutionTime = 0.93 s  ClockTime = 1 s
+
+Time = 3
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.33508944, Final residual = 0.010121079, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.32915908, Final residual = 0.010521047, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.39622406, Final residual = 0.0073701471, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.93198208, Final residual = 0.0081906811, No Iterations 64
+time step continuity errors : sum local = 0.0083327834, global = 0.00033192997, cumulative = 0.0020471257
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.93024201, Final residual = 0.00032264513, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.25634463, Final residual = 0.0017647282, No Iterations 1
+ExecutionTime = 1.22 s  ClockTime = 1 s
+
+Time = 4
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.32567902, Final residual = 0.025350972, No Iterations 1
+DILUPBiCG:  Solving for Uy, Initial residual = 0.37108491, Final residual = 0.0050018118, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.38909284, Final residual = 0.0070687047, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.65615365, Final residual = 0.0062028209, No Iterations 68
+time step continuity errors : sum local = 0.0050567805, global = 0.00014639119, cumulative = 0.0021935168
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.84616188, Final residual = 0.00090985301, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.11306016, Final residual = 0.0012373031, No Iterations 1
+ExecutionTime = 1.52 s  ClockTime = 2 s
+
+Time = 5
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.33719066, Final residual = 0.00013155167, No Iterations 4
+DILUPBiCG:  Solving for Uy, Initial residual = 0.65295607, Final residual = 0.010439972, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.40615194, Final residual = 0.0066493702, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.45840106, Final residual = 0.0042254671, No Iterations 47
+time step continuity errors : sum local = 0.0037088475, global = -0.0009262231, cumulative = 0.0012672937
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.50954932, Final residual = 0.00060717489, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.058966315, Final residual = 0.0011399299, No Iterations 1
+ExecutionTime = 1.8 s  ClockTime = 2 s
+
+Time = 6
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.25610988, Final residual = 0.0060573126, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.45648486, Final residual = 0.011599279, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.27757264, Final residual = 0.0066642856, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.68949012, Final residual = 0.0054743246, No Iterations 71
+time step continuity errors : sum local = 0.005728014, global = -6.8022622e-05, cumulative = 0.0011992711
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.22258866, Final residual = 0.00079783684, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.044940042, Final residual = 0.0020095126, No Iterations 1
+ExecutionTime = 2.1 s  ClockTime = 2 s
+
+Time = 7
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.21196965, Final residual = 0.0041917897, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.28702853, Final residual = 0.010933045, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.27536974, Final residual = 0.0089358845, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.72872213, Final residual = 0.0060998083, No Iterations 69
+time step continuity errors : sum local = 0.0046499683, global = -3.4711344e-05, cumulative = 0.0011645598
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.07992852, Final residual = 0.00079263998, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.043249088, Final residual = 0.0024423947, No Iterations 1
+ExecutionTime = 2.4 s  ClockTime = 3 s
+
+Time = 8
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.22953771, Final residual = 0.0064033935, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.44653687, Final residual = 0.01243847, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.25645759, Final residual = 0.0099532063, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.56047972, Final residual = 0.0043564199, No Iterations 46
+time step continuity errors : sum local = 0.0030806072, global = 1.4164195e-05, cumulative = 0.001178724
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.047157963, Final residual = 0.0010616047, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.049397646, Final residual = 0.0027106953, No Iterations 1
+ExecutionTime = 2.67 s  ClockTime = 3 s
+
+Time = 9
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.22447565, Final residual = 0.0076319962, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.35045658, Final residual = 0.022029384, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.22932291, Final residual = 0.0065028433, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.68376416, Final residual = 0.0052840252, No Iterations 54
+time step continuity errors : sum local = 0.0040061268, global = 0.00016098703, cumulative = 0.001339711
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.036832823, Final residual = 0.0010042923, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.050995881, Final residual = 0.0029121929, No Iterations 1
+ExecutionTime = 2.95 s  ClockTime = 3 s
+
+Time = 10
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.21512394, Final residual = 0.0068326981, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.31917561, Final residual = 0.0051380644, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.28126952, Final residual = 0.0086110136, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.78792712, Final residual = 0.0065253784, No Iterations 70
+time step continuity errors : sum local = 0.0042146017, global = 3.1227491e-05, cumulative = 0.0013709385
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.036167091, Final residual = 0.0010093582, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.05210736, Final residual = 0.0027900112, No Iterations 1
+ExecutionTime = 3.26 s  ClockTime = 3 s
+
+Time = 11
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.22146663, Final residual = 0.0062325688, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.40096542, Final residual = 0.018016747, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.26935245, Final residual = 0.0065491297, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.61544928, Final residual = 0.0058648096, No Iterations 45
+time step continuity errors : sum local = 0.0040436126, global = -0.00083530609, cumulative = 0.00053563241
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.041916589, Final residual = 0.0010958598, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.056597357, Final residual = 0.0027166772, No Iterations 1
+ExecutionTime = 3.56 s  ClockTime = 4 s
+
+Time = 12
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.19104261, Final residual = 0.0057643633, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.3263402, Final residual = 0.0082551464, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.24388206, Final residual = 0.0039982306, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.62322646, Final residual = 0.0060663274, No Iterations 67
+time step continuity errors : sum local = 0.0039949474, global = -6.6767485e-05, cumulative = 0.00046886492
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.045888856, Final residual = 0.0012635585, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.055197257, Final residual = 0.0030775918, No Iterations 1
+ExecutionTime = 3.88 s  ClockTime = 4 s
+
+Time = 13
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.16921168, Final residual = 0.0045159983, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.29058189, Final residual = 0.0080441049, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.25214175, Final residual = 0.0042711347, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.75159749, Final residual = 0.0068879784, No Iterations 70
+time step continuity errors : sum local = 0.0034103913, global = -6.4256964e-05, cumulative = 0.00040460796
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.052536257, Final residual = 0.001320003, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.05720207, Final residual = 0.0028304303, No Iterations 1
+ExecutionTime = 4.18 s  ClockTime = 4 s
+
+Time = 14
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.19307779, Final residual = 0.0039937999, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.28611714, Final residual = 0.006825802, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.22468405, Final residual = 0.0043998313, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.61885801, Final residual = 0.0054660455, No Iterations 70
+time step continuity errors : sum local = 0.0028663931, global = 4.4572286e-06, cumulative = 0.00040906519
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.053345019, Final residual = 0.0010897495, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.041089409, Final residual = 0.0022901268, No Iterations 1
+ExecutionTime = 4.49 s  ClockTime = 5 s
+
+Time = 15
+
+DILUPBiCG:  Solving for Ux, Initial residual = 0.17677924, Final residual = 0.0031420657, No Iterations 2
+DILUPBiCG:  Solving for Uy, Initial residual = 0.2530843, Final residual = 0.014002186, No Iterations 2
+DILUPBiCG:  Solving for Uz, Initial residual = 0.21727859, Final residual = 0.0028632327, No Iterations 2
+DICPCG:  Solving for p, Initial residual = 0.61492217, Final residual = 0.0052194591, No Iterations 71
+time step continuity errors : sum local = 0.0023581264, global = 5.2489192e-05, cumulative = 0.00046155438
+DILUPBiCG:  Solving for epsilon, Initial residual = 0.035293924, Final residual = 0.00064806489, No Iterations 1
+DILUPBiCG:  Solving for k, Initial residual = 0.038545425, Final residual = 0.0016357352, No Iterations 1
+ExecutionTime = 5.34 s  ClockTime = 6 s
+
+End
+

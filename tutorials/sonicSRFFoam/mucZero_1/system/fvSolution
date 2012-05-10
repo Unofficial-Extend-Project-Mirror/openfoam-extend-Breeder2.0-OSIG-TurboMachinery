@@ -1,0 +1,113 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p
+    {
+        solver           GAMG;
+        tolerance        1e-12;
+        relTol           0;
+
+// // GAMG options
+        smoother         GaussSeidel;
+
+        cacheAgglomeration on;
+
+        nCellsInCoarsestLevel 630; // 630 = 40320/64 = 40320/(8*8)
+        agglomerator     faceAreaPair;
+        mergeLevels      1; // In some cases, particularly for simple meshes, the solution can be safely speeded up by coarsening/reﬁning two levels at a time, i.e. setting mergeLevels = 2. This seems only to work after one iteration.
+
+// // additional variables for the smoother
+        nPreSweeps 0; // number of smoothing steps when coarsing the mesh level
+        nPostSweeps 2; // number of smoothing steps when refining the mesh level
+        nFinestSweeps 2; // number of smoothing steps when solution is on finest the mesh level
+    }
+
+//     p
+//     {
+//         solver          PBiCG;
+//         preconditioner  DILU;
+//         tolerance       1e-08;
+//         relTol          0;
+//     }
+
+    rho
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-05;
+        relTol          0;
+    }
+
+    U
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0;
+    }
+
+    Wxyz
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0;
+    }
+
+    e
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0;
+    }
+
+    k
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-08;
+        relTol          0;
+    }
+
+    omega
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-08;
+        relTol          0;
+    }
+
+    R
+    {
+        solver          PBiCG;
+        preconditioner  DILU;
+        tolerance       1e-05;
+        relTol          0;
+    }
+}
+
+PISO
+{
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 2;
+}
+
+
+// ************************************************************************* //

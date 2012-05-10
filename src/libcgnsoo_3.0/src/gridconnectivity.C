@@ -1,0 +1,53 @@
+/*------------------------------------------------------------------------------
+Copyright (C) 2004-2007 Hydro-Quebec
+
+This file is part of CGNSOO
+
+CGNSOO is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2, or (at your option) any
+later version.
+
+CGNSOO is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+
+You should have received a copy of the GNU General Public License
+along with CGNSOO  If not, write to the Free Software Foundation,
+Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+------------------------------------------------------------------------------*/
+#include "cgnsoo.H"
+
+namespace CGNSOO
+{
+
+//--------------------------------
+// GridConnectivity_t
+//--------------------------------
+
+GridConnectivityProperty_t GridConnectivity_t::readProperty() const
+{
+	return GridConnectivityProperty_t(push( "GridConnectivityProperty_t", 1 ));
+}
+
+GridConnectivityProperty_t GridConnectivity_t::writeProperty()
+{
+	return GridConnectivityProperty_t(push( "GridConnectivityProperty_t", 1 ));
+}
+
+//--------------------------------
+// GridConnectivity1to1_t
+//--------------------------------
+
+GridConnectivityProperty_t GridConnectivity1to1_t::readProperty() const
+{
+	return GridConnectivityProperty_t(push( "GridConnectivityProperty_t", 1 ));
+}
+
+GridConnectivityProperty_t GridConnectivity1to1_t::writeProperty()
+{
+	return GridConnectivityProperty_t(push( "GridConnectivityProperty_t", 1 ));
+}
+
+}

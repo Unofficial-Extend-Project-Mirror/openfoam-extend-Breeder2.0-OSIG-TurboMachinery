@@ -1,0 +1,6 @@
+#!/bin/bash
+
+(cd  test1; ./Allrun )
+(cd  test2; ./Allrun )
+(cd  test3; ./Allrun )
+

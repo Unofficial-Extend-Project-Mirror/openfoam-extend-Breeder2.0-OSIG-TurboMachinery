@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -rf ./case/simpleFoam.log
+rm -rf ./case/15
+rm -rf ./case/constant/polyMesh/*

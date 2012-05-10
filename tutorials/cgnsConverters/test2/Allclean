@@ -1,0 +1,7 @@
+#!/bin/bash
+
+rm -rf ./case/simpleFoam.log
+rm -rf ./case/constant/polyMesh/{boundary,blockMeshDict,*gz}
+rm -rf ./case/ConversionCGNS
+rm -rf ./case/50
+

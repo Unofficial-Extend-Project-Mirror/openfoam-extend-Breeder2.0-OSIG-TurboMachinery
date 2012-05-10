@@ -1,0 +1,4 @@
+
+rotatingPressureDirectedInletVelocityFvPatchVectorField.C
+
+LIB = $(FOAM_SITE_LIBBIN)/librotatingPressureDirectedInletVelocity

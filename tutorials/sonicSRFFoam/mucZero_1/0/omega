@@ -1,0 +1,79 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      omega;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 -1 0 0 0 0];
+
+internalField   uniform 2250;
+
+boundaryField
+{
+    rotorhub
+    {
+        type            compressible::omegaWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 2250;
+    }
+    rotorshroud
+    {
+        type            compressible::omegaWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 2250;
+    }
+    stator
+    {
+        type            compressible::omegaWallFunction;
+        Cmu             0.09;
+        kappa           0.41;
+        E               9.8;
+        value           uniform 2250;
+    }
+    rotorStator1
+    {
+        type            zeroGradient;
+    }
+    rotorStator2
+    {
+        type            fixedValue;
+        value           uniform 2250;
+    }
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 2250;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    statorCyclic
+    {
+        type            cyclic;
+        value           uniform 2250;
+    }
+    rotorCyclic
+    {
+        type            cyclic;
+        value           uniform 2250;
+    }
+}
+
+
+// ************************************************************************* //

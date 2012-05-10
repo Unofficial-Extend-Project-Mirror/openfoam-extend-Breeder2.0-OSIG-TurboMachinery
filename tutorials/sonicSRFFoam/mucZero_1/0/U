@@ -1,0 +1,113 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  1.6                                   |
+|   \\  /    A nd           | Web:      http://www.openfoam.org               |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version         2.0;
+    format          ascii;
+    class           volVectorField;
+    object          U;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 150.0);
+
+boundaryField
+{
+    rotorhub
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    rotorshroud
+    {
+        type            rotatingSplitVelocity;
+        absoluteValue   (0 0 0);   // absolute velocity vector of the whole patch
+        minZ -3.0;                 // Minimum Z coordinate of bounding box for domain Two
+        maxZ 0.325;                 // Maximum Z coordinate of bounding box for domain Two
+        minR -0.1;                 // Minimum R coordinate of bounding box for domain Two
+        maxR 0.6;                 // Maximum R coordinate of bounding box for domain Two
+        omegaOne (0.0 0.0 950.0); // angular velocity vector of domain One
+        omegaTwo (0.0 0.0 0.0);    // angular velocity vector of domain Two
+        value uniform (0 0 0);     // initial value for the relative velocity
+//
+//         type            fixedValue;
+//         value           uniform (0 0 0);
+    }
+
+    stator
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    rotorStator
+    {
+        type            cyclic;
+    }
+
+    rotorStator1
+    {
+        type            zeroGradient;
+    }
+
+    rotorStator2
+    {
+        type            fixedValue;
+	value		uniform (0.0 0.0 67.5);
+//         type pressureDirectedInletVelocity;
+//         inletDirection  uniform (0 0 1);	// Direction of absolute velocity in cartesian coordinates
+//         value           uniform (0 0 170.0); 	// Initial Value
+    }
+
+    inlet
+    {
+//         type rotatingPressureDirectedInletVelocity;
+//         phi             phi;
+//         rho             rho;
+//         inletDirection  (0 0 1);	// Direction of absolute velocity in cartesian coordinates
+//         cylindricalCCS  no;
+//         omega           (0 0 950.0); 		// Angular Frequency
+//         value           uniform (0 0 250.0); 	// Initial Value
+//
+        type            rotatingSplitVelocity;
+        absoluteValue   (0 0 167.5);   // absolute velocity vector of the whole patch
+        minZ -0.1;                 // Minimum Z coordinate of bounding box for domain Two
+        maxZ 0.1;                 // Maximum Z coordinate of bounding box for domain Two
+        minR -0.1;                 // Minimum R coordinate of bounding box for domain Two
+        maxR 0.6;                 // Maximum R coordinate of bounding box for domain Two
+        omegaOne (0.0 0.0 950.0); //angular velocity vector of domain One
+        omegaTwo (0.0 0.0 950.0);    // angular velocity vector of domain Two
+        value uniform (0 0 170.0);     // initial value for the relative velocity
+    }
+
+    outlet    
+    {
+        type            zeroGradient;
+    }
+
+    rotorCyclic
+    {
+        type            cyclic;
+    }
+
+
+    statorCyclic
+    {
+        type            cyclic;
+    }
+
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Execute test3 ------------------------------------------
+# link to the cgns mesh in test2
+(cd .; ln -s ../test2/case/ConversionCGNS/50.cgns mesh.cgns)
+pushd ./case >/dev/null
+# convert the cgns file
+# the mesh is a 50 degree sector, corresponding cyclic patches are named
+# perio1_1 and perio1_2
+cgnsToFoam ../mesh.cgns -cyclicRotZ 50.0 -matchCyclicBC perio1_1:perio1_2 
+# adjust the boundary file
+# make sure the hub and shroud patches have a wall patch type
+# the cyclic patch perio1_1_and_perio1_2 is renamed simply perio
+# and its patch type is set to cyclic
+perl -i -e '
+	$inWall=0;
+	$inCyclic=0;
+	while(<>) {
+	  Block1: {
+	    if (/perio1/)              { $inCyclic=1; last Block1; }
+	    if (/hub/    || /shroud/)  { $inWall=1;   last Block1; }
+	    if (/inflow/ || /outflow/) { $inWall=0; $inCyclic=0;  last Block1; }
+	  }
+	  if ( $inWall ) {
+	    Block2: {
+	      if (/^\}/)            { $inWall=0;              last Block2; }
+	      if (/\sphysicalType/) { s/patch/wallFunctions/; last Block2; }
+	      if (/\stype/)         { s/patch/wall/;          last Block2; }
+	    }
+	  }
+	  if ( $inCyclic ) {
+	    Block3: {
+	      if (/^\}/)            { $inCyclic=0;     last Block3; }
+	      if (/perio1/)         { s/p.*$/perio1/;  last Block3; }
+	      if (/\sphysicalType/) { s/patch/cyclic/; last Block3; }
+	      if (/\stype/)         { s/patch/cyclic/; last Block3; }
+	    }
+	  }
+	  print;
+	}' constant/polyMesh/boundary
+# compute the flow
+echo "Running simpleFoam..."
+simpleFoam  >& simpleFoam.log
+popd >/dev/null
+
+# The end.
+echo "Done."

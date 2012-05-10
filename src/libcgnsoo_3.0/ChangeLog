@@ -1,0 +1,12 @@
+Original author: Robert Magnan, 2004-01-29
+
+Changes:
+* 2006 Robert Magnan
+  Extensive rewrite of the interface
+  Added individual classes for the various CGNS nodes
+  Wrapped everything in the CGNSOO namespace
+* 2007-05-10 Robert Magnan
+  Upgrades for the GPL release
+  Moved to Configure
+  Copyright, license, etc.
+  

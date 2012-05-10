@@ -1,0 +1,55 @@
+#!/bin/bash
+set -x
+
+#
+# Compile libOpenFoamTurbo
+#
+wmake libso OpenFoamTurbo
+
+wmake libso turboPerformance
+
+#
+# Compile cgnslib
+#
+CGNSLIBHOME=`pwd`/cgnslib_2.5
+if [ -e $CGNSLIBHOME -a ! -r $CGNSLIBHOME/platforms/$WM_OPTIONS/lib/libcgns_2.5.a ]
+then
+    pushd $CGNSLIBHOME
+
+    ./configure  --prefix=$CGNSLIBHOME/platforms/$WM_OPTIONS
+    make 
+    mkdir -p $CGNSLIBHOME/platforms/$WM_OPTIONS/include
+    mkdir -p $CGNSLIBHOME/platforms/$WM_OPTIONS/lib
+    make install
+
+    # We rename libcgns.a to libcgns_2.5.a in order to avoid a problem with an older instance
+    # of libcgns.a installed for ccm26ToFoam
+    ln -s $CGNSLIBHOME/platforms/$WM_OPTIONS/lib/libcgns.a  $CGNSLIBHOME/platforms/$WM_OPTIONS/lib/libcgns_2.5.a
+
+    popd
+fi
+
+
+#
+# Compile libcgnsoo
+#
+# Here, the configuration part might be trickier because it has been developped using relatively recent
+# version of the autotools. We know that the auto-configuration part will work with these versions of
+# the autotools:
+#       autoconf 2.61
+#       automake 1.10
+#       libtool 1.5.24
+
+LIBCGNSOOHOME=`pwd`/libcgnsoo_3.0
+if [ -e $LIBCGNSOOHOME -a ! -r $LIBCGNSOOHOME/platforms/$WM_OPTIONS/lib/libcgnsoo3.a ]
+then
+    pushd $LIBCGNSOOHOME
+
+    # Verify the bootstrap script against your own installation of the autotools
+    ./bootstrap
+    ./configure --prefix=$LIBCGNSOOHOME/platforms/$WM_OPTIONS --with-CGNSLIBHOME=$CGNSLIBHOME/platforms/$WM_OPTIONS
+    make
+    make install
+
+    popd
+fi

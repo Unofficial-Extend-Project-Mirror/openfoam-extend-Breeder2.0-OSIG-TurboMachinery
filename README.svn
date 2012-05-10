@@ -1,0 +1,23 @@
+Description
+===========
+This part of the repository is for the TurboMachinery Special Interest Group.
+
+For more information about the TurboMachinery SIG, please visit
+http://openfoamwiki.net/index.php/Sig_Turbomachinery
+
+Structure
+=========
+The folder "applications" contains new applications.
+
+The folder "src" contains new libraries.
+
+The folder "tutorials" contains small tutorials for the new applications.
+
+Maintainers
+===========
+Oliver Borm
+
+Policy for Contributions
+========================
+Read the Contributors-Guide (ATM: Offline) and apply for write access to the repository.
+Add your contributions in a directory that fits (if unsure: ask)

@@ -1,0 +1,30 @@
+Description
+===========
+
+This is a tutorial for the sonicSRFFoam solver. It consists of two zones.
+The rotor zone should rotate with a fixed angular velocity omega=950 1/s.
+The rotor and stator have three double-wedge blades each.
+
+As the mixingPlane does not work yet for compressible solvers, the two zones
+are not connected in any way at the moment.
+
+The inlet values for the rotor are at timestep 0:
+  p - zeroGradient
+  T - fixedValue
+  U - rotatingSplitVelocity (fixed relative velocity)
+
+  U is the relative velocity.
+
+If appropriate you can change these BC's after timestep 0.05 to:
+  p - rotatingTotalPressure
+  T - rotatingTotalTemperature
+  U - rotatingPressureDirectedInletVelocity
+These BC's are already commented in timestep 0.
+
+Content:
+================
+mucZero tutorial
+
+Maintainers
+===========
+Oliver Borm

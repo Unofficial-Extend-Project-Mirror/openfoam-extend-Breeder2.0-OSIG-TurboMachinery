@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Execute test2 ------------------------------------------
+pushd ./case >/dev/null
+
+# generate the mesh
+pushd constant/polyMesh > /dev/null
+m4 -P blockMeshDict.m4 > blockMeshDict
+popd >/dev/null
+blockMesh 
+
+# adjust the boundary file
+# make sure all the patches have a proper 'physicalType' entry.
+# The foamToCGNS converter rely on this information in order to
+# generate the proper BCType information in the CGNS file
+perl -i -e '
+	$BCType="wall";
+	while(<>) {
+	  Block1: {
+	    if (/inflow/)    { $BCType="inlet"; last Block1; }
+	    if (/outflow/)   { $BCType="outlet"; last Block1; }
+	    if (/hub/)       { $BCType="wall"; last Block1; }
+	    if (/shroud/)    { $BCType="wall"; last Block1; }
+	    if (/perio1/)    { $BCType="cyclic"; last Block1; }
+	  }
+	  if (/nFaces/) { s/nFaces/physicalType    $BCType; \n        nFaces/;}
+	  print;
+	}' constant/polyMesh/boundary
+
+# compute the flow
+echo "Running simpleFoam..."
+simpleFoam  >& simpleFoam.log
+
+# generate a CGNS file
+foamToCGNS -latestTime 
+popd >/dev/null
+
+# The end.
+echo "Done."

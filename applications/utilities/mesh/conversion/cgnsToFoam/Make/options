@@ -1,0 +1,38 @@
+c++WARN = -Wall -W -Wno-unused-parameter -Wno-old-style-cast
+
+/* We need to define some pre-processor definition                               */
+/* in order to adjust for various versions of OpenFOAM.                          */
+/* Please adjust accordingly to your own installation.                           */
+/*                                                                               */
+/* For your information, pointVolInterpolation is not part                       */
+/* of OpenFOAM 1.5                                                               */
+/* So you need to specify -DMISSING_POINTVOLINTERPOLATION -I./compatibility for  */
+/* compiling with OpenFOAM 1.5 */
+/* */
+c++FLAGS+= -DOPENFOAM_VERSION=150 -DMISSING_POINTVOLINTERPOLATION -I./compatibility
+/* c++FLAGS+= -DOPENFOAM_VERSION=150 */
+
+
+/* We need to specify where we can locate libcgnsoo and cgnslib                  */
+/* Eventually, those packages will get integrated to the main OpenFOAM version   */
+/* In the meantime, we hardcode those values, using relative paths to $PWD.      */
+
+LIBCGNSOOHOME=$(PWD)/../../../../../src/libcgnsoo_3.0/platforms/$(WM_OPTIONS)
+CGNSLIBHOME=$(PWD)/../../../../../src/cgnslib_2.5/platforms/$(WM_OPTIONS)
+
+LINKEXE+=-Wl,-rpath=$(LIBCGNSOOHOME)/lib
+
+EXE_INC = \
+    -I$(LIB_SRC)/OpenFOAM/lnInclude \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/dynamicMesh/lnInclude \
+    -I$(CGNSLIBHOME)/include  \
+    -I$(LIBCGNSOOHOME)/include  
+
+EXE_LIBS = \
+    -L$(WM_PROJECT_USER_DIR)/lib/$(WM_OPTIONS) -lOpenFOAM -lfiniteVolume\
+    -L$(LIBCGNSOOHOME)/lib -lcgnsoo3 \
+    -L$(CGNSLIBHOME)/lib -lcgns_2.5 \
+    -lmeshTools \
+    -ldynamicMesh

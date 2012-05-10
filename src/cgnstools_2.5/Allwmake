@@ -1,0 +1,38 @@
+#!/bin/bash
+#####################################################################################################
+#
+# We install everything under cgnstools-2-5-2/platforms/$WM_OPTIONS
+#
+CGNSLIBHOME=../../cgnslib_2.5
+
+CGNSTOOLSHOME=`pwd`/cgnstools
+pushd $CGNSTOOLSHOME
+
+./configure  --prefix=$CGNSTOOLSHOME/platforms/$WM_OPTIONS \
+             --with-cgns=$CGNSLIBHOME
+
+# This is an awfull little adjustment for some 64-bit platform.
+# The problem lies with the definition of TKLIBS in the file make.defs.
+# On 64-bit systems, you will often find the Tcl/Tk libraries in /usr/lib64.
+# It would be nice if the configure script could take this option into account
+#
+# So, for 64-bit systems this should do the job; otherwise, simply invoke make
+# like this:
+# make TKLIBS="-L/usr/lib64 -ltcl8.4 -ltk8.4"
+#
+# Same thing with libXmu which sometimes is located in /usr/X11R6/lib64
+# TKOGLXLIB="-L/usr/X11R6/lib64 -lXmu -lXext"
+
+make TKLIBS="-L/usr/lib64 -ltcl8.4 -ltk8.4" TKOGLXLIB="-L/usr/X11R6/lib64 -lXmu -lXext"
+
+make install
+
+set +x
+echo ""
+echo ""
+echo "Don't forget to add the following directory to your path in order to access the CGNS Tools:"
+echo "  $CGNSTOOLSHOME/platforms/$WM_OPTIONS/bin"
+#
+
+popd
+#####################################################################################################

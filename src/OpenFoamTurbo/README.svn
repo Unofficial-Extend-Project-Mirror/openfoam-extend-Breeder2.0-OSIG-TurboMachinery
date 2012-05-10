@@ -1,0 +1,29 @@
+Description
+===========
+This part of the repository is for the the library OpenFoamTurbo from the
+TurboMachinery Special Interest Group.
+
+Library content:
+================
+
+- rotatingPressureDirectedInletVelocity : Contribution from Oliver Borm
+- rotatingSplitVelocity                 : Contribution from Oliver Borm
+- rotatingTotalTemperature              : Contribution from Oliver Borm : Temporarily disabled from the compilation.
+- SRFZones                              : Contribution from Oliver Borm
+
+Documentation:
+==============
+
+Documentation to the can be found at http://openfoamwiki.net/index.php/Sig_Turbomachinery_Library_OpenFoamTurbo
+New parts of the library should be documented there.
+
+Compatible Versions:
+====================
+
+This library was tested with the following OpenFOAM derivatives:
+
+- vanilla OpenFOAM-1.6
+
+Maintainers
+===========
+Oliver Borm
