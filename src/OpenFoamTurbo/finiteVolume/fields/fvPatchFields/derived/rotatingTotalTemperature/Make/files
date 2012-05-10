@@ -1,4 +1,4 @@
 
 rotatingTotalTemperatureFvPatchScalarField.C
 
-LIB = $(FOAM_SITE_LIBBIN)/librotatingTotalTemperature
+LIB = $(FOAM_USER_LIBBIN)/librotatingTotalTemperature

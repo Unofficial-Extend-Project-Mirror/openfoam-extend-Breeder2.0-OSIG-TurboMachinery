@@ -15,5 +15,5 @@ generalCfdTools = $(cfdTools)/general
 $(generalCfdTools)/SRFZones/SRFZone.C
 $(generalCfdTools)/SRFZones/SRFZones.C
 
-LIB = $(FOAM_SITE_LIBBIN)/libOpenFoamTurbo
+LIB = $(FOAM_USER_LIBBIN)/libOpenFoamTurbo
 

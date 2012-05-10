@@ -3,4 +3,4 @@ CGNSBoundaryConditions.C
 ConnectivityMapper.C
 SolutionConverter.C
 CGNSQuantityConverter.C
-EXE = $(FOAM_SITE_APPBIN)/cgnsToFoam
+EXE = $(FOAM_USER_APPBIN)/cgnsToFoam
